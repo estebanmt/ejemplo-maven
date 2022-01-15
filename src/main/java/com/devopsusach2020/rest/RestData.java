@@ -46,7 +46,9 @@ public class RestData {
 		int death = 0;
 		int recovered = 0;
 		Gson gson = new Gson();
-        Pais[] estados = gson.fromJson(call.getBody().toLowerCase(), Pais[].class);
+    String body = call.getBody();
+    if (body != null) {
+        Pais[] estados = gson.fromJson(body.toLowerCase(), Pais[].class);
 
         for(Pais estado : estados) {
         	response.setDate(estado.getDate());
@@ -61,6 +63,7 @@ public class RestData {
     	response.setRecovered(recovered);
     	response.setCountry(message);
     	response.setMensaje("ok");
+    }
 
 		return response;		
 	}
@@ -75,10 +78,13 @@ public class RestData {
 	    ResponseEntity<String> call= restTemplate.getForEntity("https://api.covid19api.com/world/total" ,String.class);
 	    Mundial response = new Mundial();
 		Gson gson = new Gson();
-        Mundial estado = gson.fromJson(call.getBody().toLowerCase(), Mundial.class);
-        response.setTotalConfirmed(estado.getTotalConfirmed());
-        response.setTotalDeaths(estado.getTotalDeaths());
-        response.setTotalRecovered(estado.getTotalRecovered());
+    String body = call.getBody();
+    if (body != null) {
+      Mundial estado = gson.fromJson(body.toLowerCase(), Mundial.class);
+      response.setTotalConfirmed(estado.getTotalConfirmed());
+      response.setTotalDeaths(estado.getTotalDeaths());
+      response.setTotalRecovered(estado.getTotalRecovered());
+    }
 
 		return response;		
 	}
