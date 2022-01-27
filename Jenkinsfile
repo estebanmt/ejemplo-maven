@@ -60,7 +60,7 @@ pipeline {
         stage('Paso 6: Bajar Nexus') {
             steps {
                 echo 'Bajando nexus desde código'
-                sh 'curl -X GET -u $NEXUS_USER_VAR:$NEXUS_USER_PASS_VAR "http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1-as-code/DevOpsUsach2020-1.0.0.jar" -O'
+                sh 'curl -X GET -u $NEXUS_USER_VAR:$NEXUS_USER_PASS_VAR "http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/1.0.0/DevOpsUsach2020-1.0.0.jar" -O'
             }
         }
         stage("Paso 7: Levantar Springboot APP"){
