@@ -9,7 +9,7 @@ pipeline {
         NEXUS_USER_PASS_VAR = credentials('NEXUS-PASS')
     }
     stages {
-        stage("Paso 1: Compliar"){
+        stage("Paso 1: Compilar"){
             steps {
                 script {
                 sh "echo 'Compile Code!'"
